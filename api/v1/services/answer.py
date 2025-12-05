@@ -9,12 +9,13 @@ answer_repo = AnswerRepository()
 async def create_answer_service(
     session: AsyncSession, question: Question, answer_data: AnswerCreate, user: User
 ) -> Answer:
-    return await answer_repo.create(
+    answer = await answer_repo.create(
         session,
         text=answer_data.text,
         question_id=question.id,
         user_id=user.id
     )
+    return answer
 
 async def delete_answer_service(session: AsyncSession, answer: Answer, user: User):
     if answer.user_id != user.id:
