@@ -1,10 +1,10 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import APIRouter, Depends
 
-from api.v1.answers.depends import get_answer_by_id
-from api.v1.answers.repositories import create_answer_service, delete_answer_service
-from api.v1.answers.schemas import AnswerCreate, AnswerRead
-from api.v1.questions.depends import get_question_by_id
+from api.v1.dependencies.answer import get_answer_by_id
+from api.v1.services.answer import create_answer_service, delete_answer_service
+from api.v1.schemas.answer import AnswerCreate, AnswerRead
+from api.v1.dependencies.question import get_question_by_id
 from core.auth import get_current_user
 from core.db_helper import db_helper
 from models import Answer, Question, User
