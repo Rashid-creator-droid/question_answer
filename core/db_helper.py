@@ -38,15 +38,14 @@ class DatabaseHelper:
         async with self.session_factory() as session:
             yield session
 
-
     async def scoped_session_dependency(self) -> AsyncSession:
         session = self.get_scoped_session()
         yield session
-        await session.close()
+
 
     async def get_user_db(self) -> AsyncSession:
         async with self.session_factory() as session:
-            yield SQLAlchemyUserDatabase(User, session)
+            yield SQLAlchemyUserDatabase(session, User)
 
 
 

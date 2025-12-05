@@ -31,4 +31,4 @@ fastapi_users = FastAPIUsers[User, int](
 )
 
 # Current user settings
-current_user = fastapi_users.current_user(active=True)
+get_current_user = fastapi_users.current_user(active=True)

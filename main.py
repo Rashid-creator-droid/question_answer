@@ -1,7 +1,9 @@
 import uvicorn
 from fastapi import FastAPI, Depends
 from api.v1 import router as router_v1
-
+from api.v1.users.schemas import UserRead, UserCreate, UserUpdate
+from core.auth import get_current_user, auth_backend, fastapi_users
+from core.config import settings
 
 app = FastAPI(
     title="Тестовое задание вопрос-ответы",
@@ -14,7 +16,6 @@ app = FastAPI(
 app.include_router(
     router=router_v1,
     prefix=settings.api_prefix,
-    dependencies=[Depends(current_user)]
 )
 
 app.include_router(
