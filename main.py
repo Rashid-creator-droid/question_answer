@@ -1,5 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
+from starlette.middleware.cors import CORSMiddleware
+
 from api.v1 import router as router_v1
 from api.v1.schemas.user import UserRead, UserCreate, UserUpdate
 from core.auth import auth_backend, fastapi_users
@@ -35,11 +37,18 @@ app.include_router(
     prefix="/api/users",
     tags=["Пользователь"],
 )
-@app.get("/")
-def hello_index():
-    return  {
-        "message": "Hello index",
-    }
+
+origins = [
+    "*",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", reload=True, port=8001)
