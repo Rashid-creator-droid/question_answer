@@ -17,7 +17,6 @@ if TYPE_CHECKING:
 
 
 class Question(Base):
-    __tablename__ = "questions"
 
     text: Mapped[str] = mapped_column(String, nullable=False)
     created_at: Mapped[datetime] = mapped_column(
