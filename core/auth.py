@@ -9,15 +9,14 @@ from .usermanager import get_user_manager
 
 # Cookie settings
 cookie_transport = CookieTransport(
-    cookie_name="Prosept", cookie_max_age=3600 * 24 * 7
+    cookie_name="Test",
+    cookie_max_age=3600 * 24 * 7,
 )
-
 
 # JWT settings
 def get_jwt_strategy() -> JWTStrategy:
     """JWT token settings"""
     return JWTStrategy(secret=settings.secret, lifetime_seconds=3600 * 24 * 7)
-
 
 # Base auth settings
 auth_backend = AuthenticationBackend(

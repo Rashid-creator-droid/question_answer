@@ -22,7 +22,8 @@ class Question(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     text: Mapped[str] = mapped_column(String, nullable=False)
     created_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), default=datetime.utcnow
+        DateTime(timezone=True),
+        default=datetime.utcnow,
     )
 
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"), nullable=False)
@@ -31,5 +32,5 @@ class Question(Base):
     answers: Mapped[list["Answer"]] = relationship(
         back_populates="question",
         cascade="all, delete-orphan",
-        passive_deletes=True
+        passive_deletes=True,
     )

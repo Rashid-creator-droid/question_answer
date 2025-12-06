@@ -44,7 +44,6 @@ async def db_session(engine):
         yield session
         await session.rollback()
 
-
 @pytest.fixture(scope="function")
 async def test_user(db_session, faker):
     plain_password = "password123"
@@ -68,8 +67,6 @@ async def test_user(db_session, faker):
 
 @pytest.fixture(scope="function")
 async def async_client(db_session: AsyncSession, test_user: User):
-
-
     async def get_session_override():
         yield db_session
 

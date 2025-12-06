@@ -1,8 +1,10 @@
 from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
-from models import Answer, Question, User
-from api.v1.schemas.answer import AnswerCreate
+
 from api.v1.repositories.answer import AnswerRepository
+from api.v1.schemas.answer import AnswerCreate
+from models import Answer, Question, User
+
 
 answer_repo = AnswerRepository()
 
@@ -13,7 +15,7 @@ async def create_answer_service(
         session,
         text=answer_data.text,
         question_id=question.id,
-        user_id=user.id
+        user_id=user.id,
     )
     return answer
 

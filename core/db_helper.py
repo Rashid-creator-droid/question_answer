@@ -13,7 +13,6 @@ from .config import settings, logger
 
 
 class DatabaseHelper:
-    """Database connection session"""
 
     def __init__(self, url: str, echo: bool = False):
         logger.info(f"Инициализация подключения к базе Postgres")

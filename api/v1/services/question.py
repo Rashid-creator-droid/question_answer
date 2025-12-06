@@ -3,7 +3,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.v1.repositories.question import QuestionRepository
 from api.v1.schemas.question import QuestionCreate
-
 from models import User, Question
 
 
