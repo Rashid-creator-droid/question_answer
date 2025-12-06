@@ -17,7 +17,6 @@ if TYPE_CHECKING:
     from models.questions import Question
 
 class Answer(Base):
-    __tablename__ = "answers"
 
     question_id: Mapped[int] = mapped_column(
         ForeignKey("questions.id", ondelete="CASCADE"),
