@@ -15,7 +15,6 @@ from core.db_helper import db_helper
 from core.auth import get_current_user
 
 
-
 @pytest.fixture(scope="session")
 def faker():
     return Faker()
