@@ -48,10 +48,14 @@ SECRET=xutyeq
     cd question_answer
 ```
 ### Запустить сборку контейнера Docker Compose V2
+По умолчанию проект использует образ из Docker Hub. Для запуска:
 ```bash
     docker compose up -d
 ``` 
-
+Если вы хотите использовать локальную сборку образа, можно заменить в docker-compose.yml строку с image на:
+```yml
+build: .
+```
 ### Проект будет доступен по адресу
 ```
 http://localhost:8000/
